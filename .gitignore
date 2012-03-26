@@ -1,0 +1,6 @@
+.gitignore
+Makefile
+.directory
+moc_*
+.*~
+ta_nfoviewer

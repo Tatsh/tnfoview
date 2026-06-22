@@ -1,0 +1,129 @@
+{
+  "_wiswa": {
+    "commandLine": "wiswa -d",
+    "lastRun": "2026-06-22T00:29:35Z",
+    "version": "83f3a8c-dirty"
+  },
+  "contributors": ["Andrew Udvare <audvare@gmail.com>"],
+  "cspell": {
+    "cache": {
+      "useCache": true
+    },
+    "dictionaryDefinitions": [
+      {
+        "name": "main",
+        "path": ".vscode/dictionary.txt"
+      }
+    ],
+    "enableFileTypes": {
+      "*": true
+    },
+    "enableGlobDot": true,
+    "files": ["**"],
+    "ignorePaths": [
+      "*.1",
+      "*.har",
+      "*.lock",
+      "*.ttf",
+      ".git/**",
+      ".yarn/**/*.cjs",
+      ".vscode/extensions.json",
+      "dist/**",
+      "man/**",
+      ".docs/*.tags",
+      ".docs/*.tag.xml"
+    ],
+    "language": "en-GB",
+    "languageSettings": [
+      {
+        "dictionaries": ["main"],
+        "languageId": "*"
+      }
+    ],
+    "useGitignore": true
+  },
+  "description": "Simple NFO viewer.",
+  "devDependencies": {
+    "@prettier/plugin-xml": "^3.4.2",
+    "cspell": "^10.0.1",
+    "markdownlint-cli2": "^0.22.1",
+    "prettier": "^3.8.4",
+    "prettier-plugin-ini": "^1.3.0",
+    "prettier-plugin-sort-json": "^4.2.0",
+    "prettier-plugin-toml": "^2.0.6"
+  },
+  "files": ["LICENSE.txt", "README.md"],
+  "homepage": "https://tatsh.github.io/tnfoview/",
+  "keywords": ["ascii art", "cp437", "nfo"],
+  "license": "MIT",
+  "markdownlint-cli2": {
+    "config": {
+      "MD024": {
+        "siblings_only": true
+      },
+      "MD033": {
+        "allowed_elements": ["kbd"]
+      },
+      "default": true,
+      "line-length": {
+        "code_blocks": false,
+        "line_length": 100,
+        "tables": false
+      }
+    },
+    "gitignore": true,
+    "globs": ["**/*.md", "**/*.mdc"],
+    "ignores": ["node_modules", ".yarn"],
+    "noBanner": true,
+    "showFound": true
+  },
+  "name": "tnfoview",
+  "packageManager": "yarn@4.17.0",
+  "prettier": {
+    "endOfLine": "lf",
+    "iniSpaceAroundEquals": true,
+    "jsonRecursiveSort": true,
+    "overrides": [
+      {
+        "files": ["*.json.dist", "package.json"],
+        "options": {
+          "parser": "json"
+        }
+      },
+      {
+        "files": [".clang-format"],
+        "options": {
+          "parser": "yaml"
+        }
+      },
+      {
+        "files": ["*.qrc", "*.rc", "*.ts", "*.ui"],
+        "options": {
+          "parser": "xml"
+        }
+      }
+    ],
+    "plugins": [
+      "@prettier/plugin-xml",
+      "prettier-plugin-ini",
+      "prettier-plugin-sort-json",
+      "prettier-plugin-toml"
+    ],
+    "printWidth": 100,
+    "reorderKeys": true,
+    "singleQuote": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tatsh/tnfoview.git"
+  },
+  "scripts": {
+    "build": "cmake --preset=default -DBUILD_DOCS=ON && cmake --build build",
+    "check-formatting": "clang-format --dry-run src/*.cpp src/*.h && prettier --check . && markdownlint-cli2 --config package.json --configPointer /markdownlint-cli2",
+    "check-spelling": "cspell --no-progress .",
+    "dict:update": "rm -f .vscode/dictionary.txt && cspell lint --no-progress --no-summary --unique --words-only | tr '[:upper:]' '[:lower:]' | sort -u > .vscode/dictionary.txt",
+    "format": "clang-format -i src/*.cpp src/*.h && prettier --write . && markdownlint-cli2 --config package.json --configPointer /markdownlint-cli2 --fix",
+    "qa": "yarn check-spelling && yarn check-formatting"
+  },
+  "version": "0.1.0"
+}

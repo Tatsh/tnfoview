@@ -1,0 +1,4 @@
+* text=auto eol=lf
+*.lock binary
+*.ttf binary
+/.yarn/**/*.cjs binary

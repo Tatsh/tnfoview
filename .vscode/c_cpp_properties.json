@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "cStandard": "c23",
+      "compilerPath": "/usr/bin/gcc",
+      "cppStandard": "c++23",
+      "includePath": [
+        "${workspaceFolder}/src/**",
+        "${workspaceFolder}/build/src/tnfoview_autogen/include"
+      ],
+      "name": "Linux"
+    }
+  ],
+  "env": {},
+  "version": 4
+}

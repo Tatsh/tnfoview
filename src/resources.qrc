@@ -1,0 +1,6 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+  <qresource prefix="/">
+    <file>fonts/unscii-16.ttf</file>
+  </qresource>
+</RCC>

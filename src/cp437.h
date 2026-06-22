@@ -1,20 +1,26 @@
-#ifndef CP437_H
-#define CP437_H
+/** @file */
+#pragma once
 
-class QTextCodec;
+#include <stddef.h>
 
-class QCodePage437Codec : public QTextCodec {
-  public:
-    QCodePage437Codec();
-    ~QCodePage437Codec();
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-    QByteArray name() const;
-    QList<QByteArray> aliases() const;
-    int mibEnum() const;
+/**
+ * Decode an IBM437 (CP437) encoded byte buffer into a newly allocated,
+ * NUL-terminated UTF-8 string.
+ *
+ * Every CP437 byte maps to a single Unicode code point in the Basic
+ * Multilingual Plane, so each input byte expands to at most three UTF-8 bytes.
+ *
+ * @param input  Pointer to the CP437 bytes. May be NULL only when length is 0.
+ * @param length Number of bytes to read from input.
+ * @return A heap-allocated UTF-8 string that the caller must release with
+ *         free(), or NULL if allocation fails.
+ */
+char *cp437_to_utf8(const unsigned char *input, size_t length);
 
-  protected:
-    QString convertToUnicode(const char *in, int length, ConverterState *state) const;
-    QByteArray convertFromUnicode(const QChar *in, int length, ConverterState *state) const;
-};
-
-#endif // CP437_H
+#ifdef __cplusplus
+}
+#endif

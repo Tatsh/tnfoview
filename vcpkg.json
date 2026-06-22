@@ -1,0 +1,21 @@
+{
+  "dependencies": [
+    {
+      "features": [
+        "gui",
+        "widgets"
+      ],
+      "name": "qtbase",
+      "version>=": "6.8.3"
+    }
+  ],
+  "description": "Simple NFO viewer.",
+  "documentation": "https://tnfoview.readthedocs.org",
+  "homepage": "https://tatsh.github.io/tnfoview/",
+  "license": "MIT",
+  "maintainers": [
+    "Andrew Udvare <audvare@gmail.com>"
+  ],
+  "name": "tnfoview",
+  "version": "0.1.0"
+}

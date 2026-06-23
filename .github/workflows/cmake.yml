@@ -176,7 +176,9 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Install Qt
-        uses: 'jurplel/install-qt-action@48d3ad6db93f3627c8ee7a0454bc6f3744f7e730'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qt6-base-dev qt6-base-dev-tools
       - name: Configure
         env:
           BUILD_TYPE: ${{ matrix.build-type }}

@@ -15,14 +15,16 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - name: Install Qt
-        uses: 'jurplel/install-qt-action@48d3ad6db93f3627c8ee7a0454bc6f3744f7e730'
+      - if: matrix.language == 'c-cpp'
+        name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y qt6-base-dev qt6-base-dev-tools
       - name: Initialize CodeQL
         uses: 'github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e'
         with:
+          build-mode: ${{ matrix.build-mode }}
           languages: ${{ matrix.language }}
-      - name: Autobuild
-        uses: 'github/codeql-action/autobuild@8aad20d150bbac5944a9f9d289da16a4b0d87c1e'
       - name: Perform CodeQL Analysis
         uses: 'github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e'
         with:
@@ -30,7 +32,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['cpp']
+        include:
+          - build-mode: autobuild
+            language: c-cpp
+          - build-mode: none
+            language: actions
 name: CodeQL
 'on':
   pull_request:

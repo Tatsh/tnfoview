@@ -22,4 +22,60 @@
 
 <!-- WISWA-GENERATED-README:STOP -->
 
-You know what an NFO viewer does.
+Tatsh NFO Viewer is a small desktop application for viewing NFO files: the ASCII and "ANSI art"
+text files that are traditionally distributed alongside scene releases, demos, and old software.
+These files are encoded in IBM code page 437, so they look like garbage in an ordinary text editor
+that assumes UTF-8 or Latin-1. Tatsh NFO Viewer decodes them correctly and renders them in a
+faithful fixed-width font, so the box-drawing characters, blocks, and shaded borders line up the way
+they were meant to.
+
+## Features
+
+- Correct IBM code page 437 (CP437) to Unicode decoding.
+- A bundled fixed-width CP437 font ([unscii](http://viznut.fi/unscii/)) so block and box-drawing
+  characters connect cleanly, with reduced line spacing for unbroken vertical lines.
+- Open a file from the toolbar or by passing it on the command line; it can be set as the handler
+  for `.nfo` files.
+- Automatic window sizing that fits the width of the art on load, without a horizontal scrollbar.
+- Adjustable on-screen text size (increase, decrease, and reset) without changing the saved
+  settings.
+- Optional word wrapping for files that contain long lines of prose.
+- A choice of font in the settings: the bundled CP437 font or any monospaced family installed on
+  your system.
+- Copy the displayed text to the clipboard.
+- Remembers its window size and position between sessions.
+
+It runs on Linux, Windows, and macOS.
+
+## Usage
+
+Open Tatsh NFO Viewer and choose a file with the **Open** button, or pass a file on the command
+line:
+
+```shell
+tnfoview release.nfo
+```
+
+On Linux it can be set as the default application for NFO files through your desktop environment's
+file associations; on Windows the installer registers it as an option for opening `.nfo` files.
+
+## Building from source
+
+Requirements:
+
+- CMake 3.25 or later
+- A C++23 compiler
+- Qt 6 with the Widgets module
+
+After cloning the repository:
+
+```shell
+cmake -B build
+cmake --build build
+```
+
+The viewer is then at `build/src/tnfoview`.
+
+To build and run the tests, configure with `-DBUILD_TESTS=ON` and run them with `ctest` (Linux
+only); add `-DCOVERAGE=ON` for coverage information (GCC and Clang only). To build the documentation,
+configure with `-DBUILD_DOCS=ON`.

@@ -9,6 +9,8 @@ project(
 include(FeatureSummary)
 include(GNUInstallDirs)
 
+set(DISPLAY_NAME "Tatsh NFO Viewer")
+
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
@@ -22,6 +24,7 @@ option(BUILD_DOCS_ONLY "Build documentation only." OFF)
 option(INSTALL_DOCS "Install documentation." OFF)
 
 if(BUILD_DOCS OR BUILD_DOCS_ONLY)
+  set(DOXYGEN_PROJECT_NAME "${DISPLAY_NAME}")
   set(DOXYGEN_GENERATE_TAGFILE "${CMAKE_BINARY_DIR}/html/${CMAKE_PROJECT_NAME}.tags")
   set(DOXYGEN_INTERACTIVE_SVG YES)
   set(DOXYGEN_MARKDOWN_ID_STYLE GITHUB)

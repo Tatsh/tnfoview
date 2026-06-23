@@ -1,4 +1,4 @@
-# tnfoview
+# Tatsh NFO Viewer
 
 <!-- WISWA-GENERATED-README:START -->
 

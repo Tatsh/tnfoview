@@ -34,7 +34,7 @@ parts:
       - '-DCMAKE_INSTALL_PREFIX=/usr'
     plugin: 'cmake'
     source: 'https://github.com/Tatsh/tnfoview.git'
-    source-tag: 'v0.1.0'
+    source-branch: 'master'
 platforms:
   amd64:
     build-on: 'amd64'

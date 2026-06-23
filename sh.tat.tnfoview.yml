@@ -29,7 +29,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/Tatsh/tnfoview.git
-        tag: v0.1.0
-        x-checker-data:
-          type: git
-          tag-pattern: '^v([\d.]+)$'
+        branch: master

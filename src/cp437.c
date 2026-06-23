@@ -32,7 +32,7 @@ char *cp437_to_utf8(const unsigned char *input, size_t length) {
     /* Each CP437 byte expands to at most three UTF-8 bytes. */
     char *output = malloc(length * 3 + 1);
     if (output == NULL) {
-        return NULL;
+        return NULL; /* LCOV_EXCL_LINE */
     }
     size_t out = 0;
     for (size_t i = 0; i < length; i++) {

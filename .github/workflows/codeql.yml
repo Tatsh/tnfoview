@@ -1,0 +1,41 @@
+---
+env:
+  CODEQL_EXTRACTOR_CPP_AUTOINSTALL_DEPENDENCIES: 'false'
+jobs:
+  analyze:
+    name: analyse
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: 'actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0'
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install Qt
+        uses: 'jurplel/install-qt-action@48d3ad6db93f3627c8ee7a0454bc6f3744f7e730'
+      - name: Initialize CodeQL
+        uses: 'github/codeql-action/init@8aad20d150bbac5944a9f9d289da16a4b0d87c1e'
+        with:
+          languages: ${{ matrix.language }}
+      - name: Autobuild
+        uses: 'github/codeql-action/autobuild@8aad20d150bbac5944a9f9d289da16a4b0d87c1e'
+      - name: Perform CodeQL Analysis
+        uses: 'github/codeql-action/analyze@8aad20d150bbac5944a9f9d289da16a4b0d87c1e'
+        with:
+          category: /language:${{matrix.language}}
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ['cpp']
+name: CodeQL
+'on':
+  pull_request:
+    branches: ['master']
+  push:
+    branches: ['master']
+  schedule:
+    - cron: 42 10 * * 4

@@ -1,0 +1,63 @@
+jobs:
+  build:
+    container:
+      image: 'ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9'
+      options: '--privileged'
+    runs-on: '${{ matrix.system.image }}'
+    steps:
+      - uses: 'actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0'
+        with:
+          persist-credentials: false
+      - id: 'flatpak_bundle'
+        name: 'Set Flatpak bundle filename'
+        run: |
+          version=$(jq -r '.version' package.json)
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "filename=sh.tat.tnfoview-${version}-${{ matrix.system.arch }}.flatpak" >> "$GITHUB_OUTPUT"
+      - name: 'Build Flatpak'
+        uses: 'flatpak/flatpak-github-actions/flatpak-builder@401fe28a8384095fc1531b9d320b292f0ee45adb'
+        with:
+          arch: '${{ matrix.system.arch }}'
+          bundle: '${{ steps.flatpak_bundle.outputs.filename }}'
+          manifest-path: 'sh.tat.tnfoview.yml'
+      - name: 'Upload Artifacts'
+        uses: 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a'
+        with:
+          if-no-files-found: 'error'
+          name: 'sh.tat.tnfoview-${{ steps.flatpak_bundle.outputs.version }}-${{ matrix.system.arch }}'
+          path: '${{ steps.flatpak_bundle.outputs.filename }}'
+      - name: 'Attest'
+        uses: 'actions/attest@59d89421af93a897026c735860bf21b6eb4f7b26'
+        with:
+          subject-path: '${{ steps.flatpak_bundle.outputs.filename }}'
+      - if: "github.ref_type == 'tag'"
+        name: 'Upload package'
+        uses: 'softprops/action-gh-release@718ea10b132b3b2eba29c1007bb80653f286566b'
+        with:
+          draft: true
+          fail_on_unmatched_files: true
+          files: '${{ steps.flatpak_bundle.outputs.filename }}'
+    strategy:
+      matrix:
+        system:
+          - arch: 'x86_64'
+            image: 'ubuntu-latest'
+          - arch: 'aarch64'
+            image: 'ubuntu-24.04-arm'
+name: 'Flatpak'
+'on':
+  push:
+    branches:
+      - 'master'
+    paths:
+      - '.github/workflows/flatpak.yml'
+      - 'CMakeLists.txt'
+      - 'sh.tat.tnfoview.yml'
+      - 'src/**'
+      - 'vcpkg.json'
+    tags:
+      - 'v*.*.*'
+permissions:
+  attestations: 'write'
+  contents: 'write'
+  id-token: 'write'

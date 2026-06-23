@@ -3,7 +3,7 @@ project(
   tnfoview
   VERSION 0.1.0
   LANGUAGES C CXX
-  DESCRIPTION "Simple NFO viewer."
+  DESCRIPTION "A simple NFO viewer."
   HOMEPAGE_URL "https://github.com/Tatsh/tnfoview")
 
 include(FeatureSummary)

@@ -42,7 +42,7 @@
     ],
     "useGitignore": true
   },
-  "description": "Simple NFO viewer.",
+  "description": "A simple NFO viewer.",
   "devDependencies": {
     "@prettier/plugin-xml": "^3.4.2",
     "cspell": "^10.0.1",

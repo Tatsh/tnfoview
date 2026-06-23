@@ -9,7 +9,7 @@
       "version>=": "6.11.1"
     }
   ],
-  "description": "Simple NFO viewer.",
+  "description": "A simple NFO viewer.",
   "documentation": "https://tnfoview.readthedocs.org",
   "homepage": "https://tatsh.github.io/tnfoview/",
   "license": "MIT",

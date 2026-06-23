@@ -3,7 +3,7 @@
   security_policy_supported_versions: { '0.0.x': ':white_check_mark:' },
   project_name: 'tnfoview',
   version: '0.1.0',
-  description: 'Simple NFO viewer.',
+  description: 'A simple NFO viewer.',
   custom_project_badges: [
     {
       anchor: '[![Tests](https://github.com/Tatsh/tnfoview/actions/workflows/tests.yml/badge.svg)]',

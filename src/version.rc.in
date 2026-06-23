@@ -17,7 +17,7 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "Tatsh"
-            VALUE "FileDescription", "Simple NFO viewer. - https://github.com/Tatsh/tnfoview"
+            VALUE "FileDescription", "A simple NFO viewer. - https://github.com/Tatsh/tnfoview"
             VALUE "FileVersion","@PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, 0"
             VALUE "InternalName", "@PROJECT_NAME@"
             VALUE "LegalCopyright", "Copyright (c) 2025 tnfoview authors."

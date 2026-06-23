@@ -69,16 +69,14 @@ if(APPLE)
     COMMENT "Generating ${CMAKE_PROJECT_NAME}.icns from PNG icons."
     VERBATIM)
   add_custom_target(${CMAKE_PROJECT_NAME}_icns ALL DEPENDS ${ICNS_FILE})
+  # A custom Info.plist is used so the bundle declares the NFO document type and
+  # is registered as a handler for .nfo files.
+  configure_file(Info.plist.in Info.plist @ONLY)
   set_target_properties(
     ${CMAKE_PROJECT_NAME}
     PROPERTIES OUTPUT_NAME ${DISPLAY_NAME}
                MACOSX_BUNDLE TRUE
-               MACOSX_BUNDLE_BUNDLE_NAME ${DISPLAY_NAME}
-               MACOSX_BUNDLE_ICON_FILE "${CMAKE_PROJECT_NAME}.icns"
-               MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
-               MACOSX_BUNDLE_GUI_IDENTIFIER "sh.tat.${CMAKE_PROJECT_NAME}"
-               MACOSX_BUNDLE_COPYRIGHT "Copyright (c) ${YEAR} ${DISPLAY_NAME} authors."
-               MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}")
+               MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
   add_dependencies(${CMAKE_PROJECT_NAME} ${CMAKE_PROJECT_NAME}_icns)
   set(deploy_tool_options_arg "")
   set(executable_path "$<TARGET_FILE_NAME:${CMAKE_PROJECT_NAME}>.app")

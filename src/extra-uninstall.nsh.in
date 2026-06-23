@@ -1,0 +1,3 @@
+; Unregister the .nfo "Open with" entry.
+DeleteRegValue HKCU "Software\Classes\.nfo\OpenWithProgids" "Applications.tnfoview.exe"
+DeleteRegKey HKCU "Software\Classes\Applications\tnfoview.exe"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>sh.tat.@CMAKE_PROJECT_NAME@</id>
+  <name>@DISPLAY_NAME@</name>
+  <summary>View NFO files with faithful code page 437 rendering.</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <description>
+    <p>
+      @DISPLAY_NAME@ is a small viewer for NFO files — the ASCII and CP437 art text
+      files traditionally distributed with releases. It renders them using a
+      faithful code page 437 bitmap font so block-drawing and box characters appear
+      as intended.
+    </p>
+    <p>Features:</p>
+    <ul>
+      <li>Correct code page 437 to Unicode conversion</li>
+      <li>A bundled fixed-width CP437 font for accurate block art</li>
+      <li>Open an NFO file from the command line or from the application</li>
+    </ul>
+  </description>
+  <project_license>MIT</project_license>
+  <developer_name>Tatsh</developer_name>
+  <url type="homepage">@PROJECT_HOMEPAGE_URL@</url>
+  <url type="bugtracker">@PROJECT_HOMEPAGE_URL@/issues</url>
+  <launchable type="desktop-id">sh.tat.@CMAKE_PROJECT_NAME@.desktop</launchable>
+  <categories>
+    <category>Utility</category>
+  </categories>
+  <releases>
+    <release version="@PROJECT_VERSION@" />
+  </releases>
+</component>

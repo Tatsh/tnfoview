@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=@PROJECT_DESCRIPTION@
+Exec=tnfoview %f
+GenericName=NFO Viewer
+Icon=sh.tat.@CMAKE_PROJECT_NAME@
+MimeType=text/x-nfo;
+Name=@DISPLAY_NAME@
+StartupNotify=true
+StartupWMClass=tnfoview
+Terminal=false
+Type=Application

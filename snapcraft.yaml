@@ -1,0 +1,47 @@
+apps:
+  tnfoview:
+    command: 'usr/bin/tnfoview'
+    common-id: 'sh.tat.tnfoview'
+    desktop: 'usr/share/applications/sh.tat.tnfoview.desktop'
+    extensions:
+      - 'kde-neon-6'
+    plugs:
+      - 'desktop'
+      - 'desktop-legacy'
+      - 'home'
+      - 'opengl'
+      - 'removable-media'
+      - 'wayland'
+      - 'x11'
+base: 'core24'
+confinement: 'strict'
+contact: 'https://github.com/Tatsh/tnfoview/issues'
+description: |
+  A small viewer for NFO files — the ASCII and CP437 art text files traditionally
+  distributed with releases. It renders them using a faithful code page 437 bitmap
+  font so block-drawing and box characters appear as intended.
+donation: 'https://buymeacoffee.com/Tatsh'
+grade: 'stable'
+issues: 'https://github.com/Tatsh/tnfoview/issues'
+license: 'MIT'
+name: 'tnfoview'
+parts:
+  tnfoview:
+    build-environment:
+      - LDFLAGS: '-Wl,--allow-shlib-undefined'
+    cmake-parameters:
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DCMAKE_INSTALL_PREFIX=/usr'
+    plugin: 'cmake'
+    source: 'https://github.com/Tatsh/tnfoview.git'
+    source-tag: 'v0.1.0'
+platforms:
+  amd64:
+    build-on: 'amd64'
+  arm64:
+    build-on: 'arm64'
+source-code: 'https://github.com/Tatsh/tnfoview'
+summary: 'View NFO files with code page 437 rendering'
+title: 'NFO Viewer'
+version: '0.1.0'
+website: 'https://github.com/Tatsh/tnfoview'

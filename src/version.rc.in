@@ -1,0 +1,33 @@
+1 ICON "@CMAKE_CURRENT_SOURCE_DIR@/icons/tnfoview.ico"
+1 VERSIONINFO
+ FILEVERSION @PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, 0
+ PRODUCTVERSION @PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, 0
+ FILEFLAGSMASK 0x3fL
+#ifndef NDEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Tatsh"
+            VALUE "FileDescription", "Simple NFO viewer. - https://github.com/Tatsh/tnfoview"
+            VALUE "FileVersion","@PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, 0"
+            VALUE "InternalName", "@PROJECT_NAME@"
+            VALUE "LegalCopyright", "Copyright (c) 2025 tnfoview authors."
+            VALUE "OriginalFilename", "tnfoview.exe"
+            VALUE "ProductName", "tnfoview"
+            VALUE "ProductVersion","@PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252, 0x809, 1252
+    END
+END

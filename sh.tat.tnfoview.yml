@@ -1,0 +1,35 @@
+---
+id: sh.tat.tnfoview
+runtime: org.kde.Platform
+runtime-version: '6.9'
+sdk: org.kde.Sdk
+command: tnfoview
+finish-args:
+  - --device=dri
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --filesystem=host:ro
+cleanup:
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/man
+  - /share/aclocal
+  - /share/pkgconfig
+  - /share/doc
+  - '*.a'
+  - '*.la'
+modules:
+  - name: tnfoview
+    builddir: true
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    sources:
+      - type: git
+        url: https://github.com/Tatsh/tnfoview.git
+        tag: v0.1.0
+        x-checker-data:
+          type: git
+          tag-pattern: '^v([\d.]+)$'

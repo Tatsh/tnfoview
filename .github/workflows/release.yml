@@ -53,7 +53,7 @@ jobs:
           tag="$TAG"
           sha="$HEAD_SHA"
           all_success=true
-          for workflow in Build Flatpak Prettier Snap Spelling clang-format markdownlint; do
+          for workflow in Build Flatpak Prettier Snap Spelling Tests clang-format markdownlint; do
             run=$(gh run list --workflow "$workflow" --commit "$sha" --json status,conclusion --jq '.[0]')
             if [[ -z "$run" || "$run" == 'null' ]]; then
               echo "Workflow '$workflow' did not run for this commit; treating as optional."
@@ -147,6 +147,7 @@ name: 'Release'
       - 'Prettier'
       - 'Snap'
       - 'Spelling'
+      - 'Tests'
       - 'clang-format'
       - 'markdownlint'
 permissions:

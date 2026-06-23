@@ -42,6 +42,6 @@ platforms:
     build-on: 'arm64'
 source-code: 'https://github.com/Tatsh/tnfoview'
 summary: 'View NFO files with code page 437 rendering'
-title: 'NFO Viewer'
+title: 'Tatsh NFO Viewer'
 version: '0.1.0'
 website: 'https://github.com/Tatsh/tnfoview'

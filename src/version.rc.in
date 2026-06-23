@@ -22,7 +22,7 @@ BEGIN
             VALUE "InternalName", "@PROJECT_NAME@"
             VALUE "LegalCopyright", "Copyright (c) 2025 tnfoview authors."
             VALUE "OriginalFilename", "tnfoview.exe"
-            VALUE "ProductName", "tnfoview"
+            VALUE "ProductName", "@DISPLAY_NAME@"
             VALUE "ProductVersion","@PROJECT_VERSION_MAJOR@, @PROJECT_VERSION_MINOR@, @PROJECT_VERSION_PATCH@, 0"
         END
     END

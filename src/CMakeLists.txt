@@ -1,4 +1,4 @@
-set(DISPLAY_NAME "NFO Viewer")
+set(DISPLAY_NAME "Tatsh NFO Viewer")
 
 if(CMAKE_BUILD_TYPE STREQUAL Debug AND (CMAKE_CXX_COMPILER_ID STREQUAL GNU
                                         OR CMAKE_CXX_COMPILER_ID STREQUAL Clang))

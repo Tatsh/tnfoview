@@ -2,5 +2,11 @@
 <RCC version="1.0">
   <qresource prefix="/">
     <file>unscii-16.ttf</file>
+    <file>icons/icon_16.png</file>
+    <file>icons/icon_32.png</file>
+    <file>icons/icon_48.png</file>
+    <file>icons/icon_64.png</file>
+    <file>icons/icon_128.png</file>
+    <file>icons/icon_256.png</file>
   </qresource>
 </RCC>

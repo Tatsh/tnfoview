@@ -76,6 +76,6 @@ cmake --build build
 
 The viewer is then at `build/src/tnfoview`.
 
-To build and run the tests, configure with `-DBUILD_TESTS=ON` and run them with `ctest` (Linux
-only); add `-DCOVERAGE=ON` for coverage information (GCC and Clang only). To build the documentation,
-configure with `-DBUILD_DOCS=ON`.
+To build and run the tests, configure with `-DBUILD_TESTS=ON` and run them with `ctest`; add
+`-DCOVERAGE=ON` for coverage information (GCC and Clang only). To build the documentation, configure
+with `-DBUILD_DOCS=ON`.

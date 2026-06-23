@@ -78,9 +78,8 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 add_subdirectory(src)
 
-# Tests are only built and run on Linux.
 option(BUILD_TESTS "Build tests." OFF)
-if(BUILD_TESTS AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+if(BUILD_TESTS)
   enable_testing()
   add_subdirectory(tests)
 endif()

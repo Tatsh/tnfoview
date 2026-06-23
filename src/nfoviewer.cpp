@@ -78,7 +78,7 @@ MainWindow::MainWindow() {
     // Register the bundled CP437-complete font so it is available as a choice
     // alongside the system fonts. It is the default but never forced: the user
     // can pick any monospaced family in the settings dialog.
-    const int fontId = QFontDatabase::addApplicationFont(QStringLiteral(":/fonts/unscii-16.ttf"));
+    const int fontId = QFontDatabase::addApplicationFont(QStringLiteral(":/unscii-16.ttf"));
     if (fontId != -1) {
         const QStringList families = QFontDatabase::applicationFontFamilies(fontId);
         if (!families.isEmpty()) {

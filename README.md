@@ -57,7 +57,8 @@ tnfoview release.nfo
 ```
 
 On Linux it can be set as the default application for NFO files through your desktop environment's
-file associations; on Windows the installer registers it as an option for opening `.nfo` files.
+file associations; on macOS the application bundle registers itself as a handler for `.nfo` files;
+and on Windows the installer registers it as an option for opening them.
 
 ## Building from source
 

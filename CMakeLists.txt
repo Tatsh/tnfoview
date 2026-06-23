@@ -78,6 +78,13 @@ feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
 
 add_subdirectory(src)
 
+# Tests are only built and run on Linux.
+option(BUILD_TESTS "Build tests." OFF)
+if(BUILD_TESTS AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  enable_testing()
+  add_subdirectory(tests)
+endif()
+
 set(CPACK_PACKAGE_VENDOR "Tatsh")
 set(CPACK_RESOURCE_FILE_LICENSE ${CMAKE_SOURCE_DIR}/LICENSE.txt)
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY ${PROJECT_DESCRIPTION})

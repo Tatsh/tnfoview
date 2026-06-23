@@ -2,6 +2,7 @@ aclocal
 Ångström
 appdir
 appimage
+appl
 autobuild
 autoinstall
 automoc

@@ -2,7 +2,7 @@
   uses_user_defaults: true,
   security_policy_supported_versions: { '0.0.x': ':white_check_mark:' },
   project_name: 'tnfoview',
-  version: '0.1.0',
+  version: '0.2.0',
   description: 'A simple NFO viewer.',
   custom_project_badges: [
     {
@@ -82,7 +82,7 @@
     parts+: {
       tnfoview+: {
         source: 'https://github.com/Tatsh/tnfoview.git',
-        'source-tag': 'v0.1.0',
+        'source-tag': 'v0.2.0',
       },
     },
   },

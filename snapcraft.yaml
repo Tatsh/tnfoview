@@ -34,7 +34,7 @@ parts:
       - '-DCMAKE_INSTALL_PREFIX=/usr'
     plugin: 'cmake'
     source: 'https://github.com/Tatsh/tnfoview.git'
-    source-branch: 'master'
+    source-tag: 'v0.2.0'
 platforms:
   amd64:
     build-on: 'amd64'
@@ -43,5 +43,5 @@ platforms:
 source-code: 'https://github.com/Tatsh/tnfoview'
 summary: 'View NFO files with code page 437 rendering'
 title: 'Tatsh NFO Viewer'
-version: '0.1.0'
+version: '0.2.0'
 website: 'https://github.com/Tatsh/tnfoview'

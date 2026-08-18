@@ -9,6 +9,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [unreleased]
 
+## [0.2.0] - 2026-08-18
+
 ### Added
 
 - Settings dialog to choose the font (monospaced families plus Iosevka), the font size, whether to
@@ -30,9 +32,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - The open dialog now filters to `*.nfo` files.
 - The window remembers its geometry and auto-fits its width to the content when a file loads.
 
-## [0.0.1] - 2026-00-00
+## [0.1.0] - 2012-03-26
 
 First version.
 
-[unreleased]: https://github.com/Tatsh/tnfoview/compare/v0.1.0...HEAD
-[0.0.1]: https://github.com/Tatsh/tnfoview/releases/tag/v0.1.0
+[unreleased]: https://github.com/Tatsh/tnfoview/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/Tatsh/tnfoview/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/Tatsh/tnfoview/releases/tag/v0.1.0

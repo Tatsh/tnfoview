@@ -1,3 +1,5 @@
+local utils = import 'utils.libsonnet';
+
 {
   uses_user_defaults: true,
   security_policy_supported_versions: { '0.0.x': ':white_check_mark:' },
@@ -32,6 +34,7 @@
     },
   },
   prettierignore+: ['*.desktop', '*.tags', '*.mm', '*.ttf'],
+  gitattributes+: ['*.ttf binary'],
   cz+: {
     commitizen+: {
       version_files+: [
@@ -74,7 +77,7 @@
       {
         features: ['gui', 'widgets'],
         name: 'qtbase',
-        'version>=': '6.8.3',
+        'version>=': utils.latestVcpkgPortVersion('qtbase'),
       },
     ],
   },

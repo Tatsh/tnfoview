@@ -1,5 +1,4 @@
 aclocal
-Ångström
 appdir
 appimage
 appl
@@ -17,7 +16,6 @@ choco
 clangarm
 color
 commitizen
-cooldown
 coveragerc
 coverallsapp
 cpack
@@ -29,10 +27,8 @@ dbuild
 dcmake
 dcoverage
 dcpack
-dependpath
 dialog
 docstrings
-dversion
 endforeach
 endfunction
 esac
@@ -55,7 +51,6 @@ hkcu
 iconset
 iconutil
 ifndef
-includepath
 instdir
 interprocedural
 iosevka
@@ -63,21 +58,19 @@ iwyu
 jinja
 jsonnet
 jsonschema
-jurplel
 launchable
 ldflags
 libera
-libname
 libqwayland
 libsonnet
 linuxdeploy
 mainpage
+mapfile
 mdfile
 metainfo
 mktemp
 msystem
 mypy
-namedebug
 ndebug
 nfoviewer
 nsis
@@ -112,8 +105,6 @@ shellformat
 shlib
 snapcore
 snapcraft
-softprops
-srcs
 statusline
 strequal
 tagfile
@@ -130,7 +121,6 @@ unscii
 vendored
 venv
 versioninfo
-viewr
 viznut
 werror
 wextra
@@ -143,5 +133,4 @@ worktree
 xlink
 yarnrc
 zizmor
-zoomin
-zoomout
+Ångström

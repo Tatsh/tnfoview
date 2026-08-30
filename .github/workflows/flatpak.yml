@@ -8,12 +8,14 @@ jobs:
       - uses: 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
         with:
           persist-credentials: false
-      - id: 'flatpak_bundle'
+      - env:
+          ARCH: '${{ matrix.system.arch }}'
+        id: 'flatpak_bundle'
         name: 'Set Flatpak bundle filename'
         run: |
           version=$(jq -r '.version' package.json)
           echo "version=${version}" >> "$GITHUB_OUTPUT"
-          echo "filename=sh.tat.tnfoview-${version}-${{ matrix.system.arch }}.flatpak" >> "$GITHUB_OUTPUT"
+          echo "filename=sh.tat.tnfoview-${version}-${ARCH}.flatpak" >> "$GITHUB_OUTPUT"
       - name: 'Build Flatpak'
         uses: 'flatpak/flatpak-github-actions/flatpak-builder@401fe28a8384095fc1531b9d320b292f0ee45adb'
         with:
@@ -32,11 +34,17 @@ jobs:
           subject-path: '${{ steps.flatpak_bundle.outputs.filename }}'
       - if: "github.ref_type == 'tag'"
         name: 'Upload package'
-        uses: 'softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228'
-        with:
-          draft: true
-          fail_on_unmatched_files: true
-          files: '${{ steps.flatpak_bundle.outputs.filename }}'
+        env:
+          FILENAME: '${{ steps.flatpak_bundle.outputs.filename }}'
+          GH_TOKEN: '${{ github.token }}'
+          REF_NAME: '${{ github.ref_name }}'
+        run: |
+          if [[ ! -f "$FILENAME" ]]; then
+            echo "::error::Flatpak bundle '${FILENAME}' was not produced."
+            exit 1
+          fi
+          gh release create "$REF_NAME" --draft --title "$REF_NAME" --notes '' --verify-tag || true
+          gh release upload "$REF_NAME" "$FILENAME" --clobber
     strategy:
       matrix:
         system:

@@ -40,7 +40,7 @@ jobs:
           subject-path: |
             ${{github.workspace}}/tnfoview-*.zip
             ${{github.workspace}}/tnfoview-*.dmg
-      - if: ${{ github.ref_type == 'tag' }}
+      - if: ${{ github.ref_type == 'tag' && matrix.build-type == 'Release' }}
         name: Upload package
         shell: bash
         env:
@@ -135,7 +135,7 @@ jobs:
           subject-path: |
             ${{github.workspace}}/tnfoview-*.exe
             ${{github.workspace}}/tnfoview-*.zip
-      - if: ${{ github.ref_type == 'tag' && matrix.sys.release }}
+      - if: ${{ github.ref_type == 'tag' && matrix.sys.release && matrix.build-type == 'Release' }}
         name: Upload package
         shell: bash
         env:

@@ -73,8 +73,10 @@ msystem
 mypy
 ndebug
 nfoviewer
+noone
 nsis
 nullptr
+numpydoc
 oneline
 pacboy
 preapproved
@@ -129,7 +131,6 @@ winarm
 winget
 wiswa
 wiswa's
-worktree
 xlink
 yarnrc
 zizmor

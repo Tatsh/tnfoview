@@ -16,6 +16,7 @@
 *.min.js
 *.mm
 *.tags
+*.tsbuildinfo
 *.ttf
 *~
 .*.swp

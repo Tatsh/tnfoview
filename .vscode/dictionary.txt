@@ -16,6 +16,7 @@ choco
 clangarm
 color
 commitizen
+concrt
 coveragerc
 coverallsapp
 cpack
@@ -69,6 +70,9 @@ mapfile
 mdfile
 metainfo
 mktemp
+msvcp
+msvcprtd
+msvcrtd
 msystem
 mypy
 ndebug
@@ -116,10 +120,14 @@ tnfoview
 tolower
 tostring
 ucrt
+ucrtbased
 udvare
 undraft
 undrafted
 unscii
+vccorlib
+vcomp
+vcruntime
 vendored
 venv
 versioninfo

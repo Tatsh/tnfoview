@@ -113,6 +113,43 @@ jobs:
           cmake --install "$OUT/build"
           --config "$BUILD_TYPE" --verbose
         shell: msys2 {0}
+      # Release binaries link the release CRT. The scan below reports markers
+      # such as VCRUNTIME140D or ucrtbased and fails the job when the
+      # executable or a bundled DLL in the install prefix references a debug
+      # runtime.
+      - if: matrix.build-type == 'Release'
+        name: Check for debug runtime linkage
+        run: |
+          $markers = @(
+            'VCRUNTIME140D',
+            'MSVCP140D',
+            'VCOMP140D',
+            'CONCRT140D',
+            'VCCORLIB140D',
+            'ucrtbased',
+            'MSVCRTD',
+            'MSVCPRTD'
+          )
+          $binaries = @(Get-ChildItem build/prefix -Recurse -Include *.dll, *.exe)
+          if ($binaries.Count -eq 0) {
+            Write-Host '::error::No release binaries found to scan.'
+            exit 1
+          }
+          $failed = $false
+          $binaries | ForEach-Object {
+            $bytes = [System.IO.File]::ReadAllBytes($_.FullName)
+            $text = [System.Text.Encoding]::ASCII.GetString($bytes)
+            foreach ($marker in $markers) {
+              if ($text.Contains($marker)) {
+                Write-Host "::error::$($_.Name) references debug runtime $marker."
+                $failed = $true
+              }
+            }
+          }
+          if ($failed) {
+            exit 1
+          }
+        shell: pwsh
       - name: Package
         env:
           BUILD_TYPE: ${{ matrix.build-type }}

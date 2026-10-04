@@ -104,6 +104,7 @@ rect
 reflow
 regen
 ripgreprc
+sbclaude
 schemafile
 settingsdialog
 shctx

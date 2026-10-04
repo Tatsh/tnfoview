@@ -1,8 +1,17 @@
+concurrency:
+  cancel-in-progress: false
+  group: '${{ github.workflow }}-${{ github.ref }}'
+  queue: 'max'
 jobs:
   build:
     container:
-      image: 'ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9'
+      image: 'ghcr.io/flathub-infra/flatpak-github-actions:kde-6.9@sha256:da914fcb8e6dc77aa33c04b9507143717d3cd74c05d907780abe1090c0d4e54a'
       options: '--privileged'
+    name: 'Build'
+    permissions:
+      attestations: 'write'
+      contents: 'write'
+      id-token: 'write'
     runs-on: '${{ matrix.system.image }}'
     steps:
       - uses: 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
@@ -65,7 +74,4 @@ name: 'Flatpak'
       - 'vcpkg.json'
     tags:
       - 'v*.*.*'
-permissions:
-  attestations: 'write'
-  contents: 'write'
-  id-token: 'write'
+permissions: {}

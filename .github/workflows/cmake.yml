@@ -1,6 +1,11 @@
 ---
+concurrency:
+  cancel-in-progress: false
+  group: '${{ github.workflow }}-${{ github.ref }}'
+  queue: 'max'
 jobs:
   build-macos:
+    name: 'Build (macOS)'
     runs-on: ${{ matrix.os }}
     permissions:
       attestations: write
@@ -55,6 +60,7 @@ jobs:
         build-type: [Debug, Release]
         os: [macos-latest, macos-15-intel]
   build-msys:
+    name: 'Build (MSYS2)'
     runs-on: ${{ matrix.sys.runner }}
     permissions:
       attestations: write
@@ -66,11 +72,13 @@ jobs:
         run: >-
           echo out=$("$env:GITHUB_WORKSPACE" -Replace "\\","/") | Out-File
           -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        shell: 'pwsh'
       - if: matrix.sys.name == 'clangarm64'
         name: Install NSIS via Chocolatey
         run: |
           choco install nsis -y --no-progress
           'C:\Program Files (x86)\NSIS' | Out-File -Append -Encoding utf8 -FilePath $env:GITHUB_PATH
+        shell: 'pwsh'
       - uses: 'msys2/setup-msys2@66cd2cce69caa17b53920067426061ca1de3a884'
         with:
           install: >-
@@ -202,6 +210,7 @@ jobs:
             release: true
             runner: windows-11-arm
   build-linux:
+    name: 'Build (Linux)'
     runs-on: ${{ matrix.arch.runner }}
     permissions:
       attestations: write
@@ -247,7 +256,8 @@ jobs:
           wget "https://github.com/TheAssassin/linuxdeploy/releases/download/continuous/linuxdeploy-${DEPLOY_ARCH}.AppImage"
           wget "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-${DEPLOY_ARCH}.AppImage"
           chmod +x "linuxdeploy-${DEPLOY_ARCH}.AppImage" "linuxdeploy-plugin-qt-${DEPLOY_ARCH}.AppImage"
-          export QMAKE="$(command -v qmake6)"
+          QMAKE="$(command -v qmake6)"
+          export QMAKE
           "./linuxdeploy-${DEPLOY_ARCH}.AppImage" --appdir "$GITHUB_WORKSPACE/build/AppDir" --plugin qt --output appimage
           rm "./linuxdeploy-${DEPLOY_ARCH}.AppImage" "./linuxdeploy-plugin-qt-${DEPLOY_ARCH}.AppImage"
           mv -v "$GITHUB_WORKSPACE"/*.AppImage "$GITHUB_WORKSPACE/tnfoview-${BUILD_TYPE}-${DEPLOY_ARCH}.AppImage"

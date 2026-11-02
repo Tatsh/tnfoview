@@ -79,6 +79,7 @@ ndebug
 nfoviewer
 noone
 nsis
+nullglob
 nullptr
 numpydoc
 oneline
@@ -111,6 +112,7 @@ shctx
 shellcheck
 shellformat
 shlib
+shopt
 snapcore
 snapcraft
 statusline

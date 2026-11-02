@@ -250,14 +250,25 @@ jobs:
         env:
           BUILD_TYPE: ${{ matrix.build-type }}
           DEPLOY_ARCH: ${{ matrix.arch.deploy_arch }}
-          EXTRA_PLATFORM_PLUGINS: 'libqwayland-generic.so;libqwayland-egl.so'
-          EXTRA_QT_PLUGINS: 'wayland-decoration-client;wayland-graphics-integration-client;wayland-shell-integration'
         run: |
           wget "https://github.com/TheAssassin/linuxdeploy/releases/download/continuous/linuxdeploy-${DEPLOY_ARCH}.AppImage"
           wget "https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/linuxdeploy-plugin-qt-${DEPLOY_ARCH}.AppImage"
           chmod +x "linuxdeploy-${DEPLOY_ARCH}.AppImage" "linuxdeploy-plugin-qt-${DEPLOY_ARCH}.AppImage"
           QMAKE="$(command -v qmake6)"
           export QMAKE
+          qt_plugins="$(qmake6 -query QT_INSTALL_PLUGINS)"
+          shopt -s nullglob
+          platform_plugins=("${qt_plugins}"/platforms/libqwayland*.so)
+          test "${#platform_plugins[@]}" -gt 0
+          printf -v EXTRA_PLATFORM_PLUGINS '%s;' "${platform_plugins[@]##*/}"
+          export EXTRA_PLATFORM_PLUGINS="${EXTRA_PLATFORM_PLUGINS%;}"
+          EXTRA_QT_PLUGINS=''
+          for group in wayland-decoration-client wayland-graphics-integration-client wayland-shell-integration; do
+              if [[ -d "${qt_plugins}/${group}" ]]; then
+                  EXTRA_QT_PLUGINS+="${group};"
+              fi
+          done
+          export EXTRA_QT_PLUGINS="${EXTRA_QT_PLUGINS%;}"
           "./linuxdeploy-${DEPLOY_ARCH}.AppImage" --appdir "$GITHUB_WORKSPACE/build/AppDir" --plugin qt --output appimage
           rm "./linuxdeploy-${DEPLOY_ARCH}.AppImage" "./linuxdeploy-plugin-qt-${DEPLOY_ARCH}.AppImage"
           mv -v "$GITHUB_WORKSPACE"/*.AppImage "$GITHUB_WORKSPACE/tnfoview-${BUILD_TYPE}-${DEPLOY_ARCH}.AppImage"

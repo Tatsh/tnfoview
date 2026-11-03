@@ -18,6 +18,7 @@ clangarm
 color
 commitizen
 concrt
+copytree
 coveragerc
 coverallsapp
 cpack
@@ -57,7 +58,6 @@ ifndef
 instdir
 interprocedural
 iosevka
-iterdir
 iwyu
 jinja
 jsonnet
@@ -111,6 +111,7 @@ rect
 reflow
 regen
 ripgreprc
+rmtree
 sbclaude
 schemafile
 settingsdialog
@@ -119,6 +120,7 @@ shellcheck
 shellformat
 shlib
 shopt
+shutil
 snapcore
 snapcraft
 statusline

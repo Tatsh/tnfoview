@@ -1,4 +1,5 @@
 aclocal
+analyzer
 appdir
 appimage
 appl
@@ -30,6 +31,7 @@ dcoverage
 dcpack
 dialog
 docstrings
+elif
 endforeach
 endfunction
 esac
@@ -55,6 +57,7 @@ ifndef
 instdir
 interprocedural
 iosevka
+iterdir
 iwyu
 jinja
 jsonnet
@@ -77,6 +80,7 @@ msystem
 mypy
 ndebug
 nfoviewer
+nojekyll
 noone
 nsis
 nullglob
@@ -84,6 +88,7 @@ nullptr
 numpydoc
 oneline
 pacboy
+pathlib
 pipx
 preapproved
 productversion

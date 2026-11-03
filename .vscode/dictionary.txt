@@ -89,6 +89,7 @@ numpydoc
 oneline
 pacboy
 pathlib
+pipefail
 pipx
 preapproved
 productversion

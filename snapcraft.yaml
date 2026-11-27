@@ -38,8 +38,6 @@ parts:
 platforms:
   amd64:
     build-on: 'amd64'
-  arm64:
-    build-on: 'arm64'
 source-code: 'https://github.com/Tatsh/tnfoview'
 summary: 'View NFO files with code page 437 rendering'
 title: 'Tatsh NFO Viewer'

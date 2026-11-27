@@ -1,5 +1,4 @@
 aclocal
-analyzer
 appdir
 appimage
 appl
@@ -18,7 +17,6 @@ clangarm
 color
 commitizen
 concrt
-copytree
 coveragerc
 coverallsapp
 cpack
@@ -32,7 +30,6 @@ dcoverage
 dcpack
 dialog
 docstrings
-elif
 endforeach
 endfunction
 esac
@@ -88,8 +85,6 @@ nullptr
 numpydoc
 oneline
 pacboy
-pathlib
-pipefail
 pipx
 preapproved
 productversion
@@ -112,7 +107,6 @@ rect
 reflow
 regen
 ripgreprc
-rmtree
 sarif
 sbclaude
 schemafile
@@ -122,7 +116,6 @@ shellcheck
 shellformat
 shlib
 shopt
-shutil
 snapcore
 snapcraft
 statusline
